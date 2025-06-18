@@ -1,6 +1,6 @@
-# Publica tu página web en Github
+# Publica tu página web en Github v1.3
 
-Hoy en día, la mayoría de las publicaciones se hacen en lasredes sociales. Cada vez se usan menos los blogs, y las páginas web propias en general.
+Hoy en día, la mayoría de las publicaciones se hacen en las redes sociales. Cada vez se usan menos los blogs, y las páginas web propias en general.
 
 Pero desde [El Cacharreo](http://blog.elcacharreo.com) queremos reivindicar la publicación de contenidos por nosotros mismos, controlando todo el proceso.
 
@@ -248,4 +248,6 @@ Si no quieres usar GitHub o buscas más opciones, aquí tienes algunas:
 - Evita espacios o caracteres especiales en nombres de archivos o carpetas.
 - Puedes agregar CSS o imágenes subiéndolos al mismo repositorio.
 - Si haces cambios, recuerda **commitear** y luego GitHub actualiza la página automáticamente.
+- A veces tarda unos segundos en aparecer la última versión...
+- 
     
