@@ -1,643 +1,346 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<title>Publica_tu_web_en_GitHub.md</title>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-
-<style>
-/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
-body {
-	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
-	font-size: var(--vscode-markdown-font-size, 14px);
-	padding: 0 26px;
-	line-height: var(--vscode-markdown-line-height, 22px);
-	word-wrap: break-word;
-}
-
-#code-csp-warning {
-	position: fixed;
-	top: 0;
-	right: 0;
-	color: white;
-	margin: 16px;
-	text-align: center;
-	font-size: 12px;
-	font-family: sans-serif;
-	background-color:#444444;
-	cursor: pointer;
-	padding: 6px;
-	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
-}
-
-#code-csp-warning:hover {
-	text-decoration: none;
-	background-color:#007acc;
-	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
-}
-
-body.scrollBeyondLastLine {
-	margin-bottom: calc(100vh - 22px);
-}
-
-body.showEditorSelection .code-line {
-	position: relative;
-}
-
-body.showEditorSelection .code-active-line:before,
-body.showEditorSelection .code-line:hover:before {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	left: -12px;
-	height: 100%;
-}
-
-body.showEditorSelection li.code-active-line:before,
-body.showEditorSelection li.code-line:hover:before {
-	left: -30px;
-}
-
-.vscode-light.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.15);
-}
-
-.vscode-light.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.40);
-}
-
-.vscode-light.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-.vscode-dark.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.4);
-}
-
-.vscode-dark.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.60);
-}
-
-.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-.vscode-high-contrast.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 160, 0, 0.7);
-}
-
-.vscode-high-contrast.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 160, 0, 1);
-}
-
-.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-img {
-	max-width: 80%;
-	max-height: 80%;
-}
-
-a {
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-a:focus,
-input:focus,
-select:focus,
-textarea:focus {
-	outline: 1px solid -webkit-focus-ring-color;
-	outline-offset: -1px;
-}
-
-hr {
-	border: 0;
-	height: 2px;
-	border-bottom: 2px solid;
-}
-
-h1 {
-	padding-bottom: 0.3em;
-	line-height: 1.2;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-}
-
-h1, h2, h3 {
-	font-weight: normal;
-}
-
-table {
-	border-collapse: collapse;
-}
-
-table > thead > tr > th {
-	text-align: left;
-	border-bottom: 1px solid;
-}
-
-table > thead > tr > th,
-table > thead > tr > td,
-table > tbody > tr > th,
-table > tbody > tr > td {
-	padding: 5px 10px;
-}
-
-table > tbody > tr + tr > td {
-	border-top: 1px solid;
-}
-
-blockquote {
-	margin: 0 7px 0 5px;
-	padding: 0 16px 0 10px;
-	border-left-width: 5px;
-	border-left-style: solid;
-}
-
-code {
-	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
-	font-size: 1em;
-	line-height: 1.357em;
-}
-
-body.wordWrap pre {
-	white-space: pre-wrap;
-}
-
-pre:not(.hljs),
-pre.hljs code > div {
-	padding: 16px;
-	border-radius: 3px;
-	overflow: auto;
-}
-
-pre code {
-	color: var(--vscode-editor-foreground);
-	tab-size: 4;
-}
-
-/** Theming */
-
-.vscode-light pre {
-	background-color: rgba(220, 220, 220, 0.4);
-}
-
-.vscode-dark pre {
-	background-color: rgba(10, 10, 10, 0.4);
-}
-
-.vscode-high-contrast pre {
-	background-color: rgb(0, 0, 0);
-}
-
-.vscode-high-contrast h1 {
-	border-color: rgb(0, 0, 0);
-}
-
-.vscode-light table > thead > tr > th {
-	border-color: rgba(0, 0, 0, 0.69);
-}
-
-.vscode-dark table > thead > tr > th {
-	border-color: rgba(255, 255, 255, 0.69);
-}
-
-.vscode-light h1,
-.vscode-light hr,
-.vscode-light table > tbody > tr + tr > td {
-	border-color: rgba(0, 0, 0, 0.18);
-}
-
-.vscode-dark h1,
-.vscode-dark hr,
-.vscode-dark table > tbody > tr + tr > td {
-	border-color: rgba(255, 255, 255, 0.18);
-}
-
-</style>
-
-<link rel="stylesheet" href="styles.css">
-
-<style>
-/* Tomorrow Theme */
-/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-/* Original theme - https://github.com/chriskempson/tomorrow-theme */
-
-/* Tomorrow Comment */
-.hljs-comment,
-.hljs-quote {
-	color: #8e908c;
-}
-
-/* Tomorrow Red */
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag,
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-regexp,
-.hljs-deletion {
-	color: #c82829;
-}
-
-/* Tomorrow Orange */
-.hljs-number,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-literal,
-.hljs-type,
-.hljs-params,
-.hljs-meta,
-.hljs-link {
-	color: #f5871f;
-}
-
-/* Tomorrow Yellow */
-.hljs-attribute {
-	color: #eab700;
-}
-
-/* Tomorrow Green */
-.hljs-string,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition {
-	color: #718c00;
-}
-
-/* Tomorrow Blue */
-.hljs-title,
-.hljs-section {
-	color: #4271ae;
-}
-
-/* Tomorrow Purple */
-.hljs-keyword,
-.hljs-selector-tag {
-	color: #8959a8;
-}
-
-.hljs {
-	display: block;
-	overflow-x: auto;
-	color: #4d4d4c;
-	padding: 0.5em;
-}
-
-.hljs-emphasis {
-	font-style: italic;
-}
-
-.hljs-strong {
-	font-weight: bold;
-}
-</style>
-
-<style>
-/*
- * Markdown PDF CSS
- */
-
- body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
-	padding: 0 12px;
-}
-
-pre {
-	background-color: #f8f8f8;
-	border: 1px solid #cccccc;
-	border-radius: 3px;
-	overflow-x: auto;
-	white-space: pre-wrap;
-	overflow-wrap: break-word;
-}
-
-pre:not(.hljs) {
-	padding: 23px;
-	line-height: 19px;
-}
-
-blockquote {
-	background: rgba(127, 127, 127, 0.1);
-	border-color: rgba(0, 122, 204, 0.5);
-}
-
-.emoji {
-	height: 1.4em;
-}
-
-code {
-	font-size: 14px;
-	line-height: 19px;
-}
-
-/* for inline code */
-:not(pre):not(.hljs) > code {
-	color: #C9AE75; /* Change the old color so it seems less like an error */
-	font-size: inherit;
-}
-
-/* Page Break : use <div class="page"/> to insert page break
--------------------------------------------------------- */
-.page {
-	page-break-after: always;
-}
-
-</style>
-
-<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial: Publicar Página Web en GitHub Pages</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #f5f7fa;
+            padding: 20px;
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+        }
+
+        /* Header styles */
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Main content */
+        main {
+            padding: 1rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            color: #2c5282;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 50px;
+            height: 3px;
+            background: #2c5282;
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: #4a4a4a;
+        }
+
+        a {
+            color: #3182ce;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #2b6cb0;
+            text-decoration: underline;
+        }
+
+        /* List styles */
+        ul {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        ul li {
+            position: relative;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        ul li::before {
+            content: '•';
+            position: absolute;
+            left: -1.5rem;
+            color: #3182ce;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            p, ul li {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            .container {
+                padding: 0.5rem;
+            }
+        }
+
+        /* Smooth transitions */
+        section {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-  <script>
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-          ? 'dark'
-          : 'default'
-    });
-  </script>
-<h1 id="publica-tu-p%C3%A1gina-web-en-github-v13">Publica tu página web en Github v1.3</h1>
-<p>Hoy en día, la mayoría de las publicaciones se hacen en las redes sociales. Cada vez se usan menos los blogs, y las páginas web propias en general.</p>
-<p>Pero desde <a href="http://blog.elcacharreo.com">El Cacharreo</a> queremos reivindicar la publicación de contenidos por nosotros mismos, controlando todo el proceso.</p>
-<p>Las redes sociales son un buen escaparate, pero hay demasiadas cosas que no controlamos:</p>
-<ul>
-<li>Un algoritmo desconocido decide <strong>quién</strong> te ve..</li>
-<li>El mismo algoritmo decide <strong>qué</strong> te interesa...</li>
-<li>También el orden, la frecuencia o la antigüedad de las publicaciones la decide ese algoritmo.</li>
-<li>Según tu perfil verás unas cosas u otras: ¿eres un señor? te enseñará deportes...</li>
-</ul>
-<p>Por todo ello vamos a empezar una serie de tutoriales explicando cómo funciona la publicación web, cómo podemos crear y publicar nuestros propios contenidos.</p>
-<p>Eso sí, luego recurriremos a las redes sociales para darle publicidad y moverlas un poquito...</p>
-<p>Vamos a empezar con un <strong>tutorial muy detallado</strong> para publicar una <strong>página web en <a href="https://github.com/">GitHub</a></strong> usando GitHub Pages. Al final, también verás otras <strong>alternativas gratuitas</strong> para alojar sitios no profesionales y como <strong>ejemplo de página web publicada</strong> usaremos este mismo tutorial.</p>
-<p>Vamos a simplificar, usando sólo HTML, y algo de estilo (CSS) pero no interatividad (javascript) de momento.</p>
-<p>Como hemos dicho usaremos para el alojamiento usaremos <a href="https://github.com/">GitHub</a>, que es un servicio de almacenamiento en la nube, pero especializado en temas de programación o de documentación. Yo lo uso para guardar la <a href="https://github.com/javacasm">documentación de mis cursos</a></p>
-<hr>
-<h2 id="%F0%9F%A7%B0-requisitos-previos">🧰 Requisitos previos</h2>
-<ul>
-<li>Una computadora con navegador web (Chrome, Firefox, Edge, etc.)</li>
-<li>Conexión a internet</li>
-<li>Para esta primera versión, <strong>no vas a necesitar conocimientos en programación</strong> ni de uso avanzado de su sistema operativo</li>
-</ul>
-<hr>
-<h2 id="%E2%9C%85-paso-1-crear-una-cuenta-en-github">✅ PASO 1: Crear una cuenta en GitHub</h2>
-<p>Empezaremos creando nuestra en <a href="https://github.com/">GitHub</a></p>
-<ol>
-<li>
-<p>Ve a <a href="https://github.com">https://github.com</a></p>
-</li>
-<li>
-<p>Haz clic en el botón <strong>&quot;Sign up&quot;</strong> (Registrarse). Como verás la página está en inglés, hasta donde yo sé no se puede seleccionar otro idioma, mejor que te acostumbres a usar el inglés...</p>
-</li>
-<li>
-<p>Escribre:</p>
-<ul>
-<li>Nombre de usuario</li>
-<li>Un correo electrónico válido</li>
-<li>Contraseña segura</li>
-</ul>
-</li>
-<li>
-<p>Verifica tu cuenta mediante el CAPTCHA y después se te enviará una confirmación a tu email.
-<img src="images/github_verifica_tu_cuenta_tipo.png" alt=""></p>
-</li>
-</ol>
-<p>Si usamos &quot;Rompecabezas visual&quot;</p>
-<p><img src="./images/gihut_verifica_tu_cuenta.png" alt=""></p>
-<ol start="5">
-<li>Elige el plan gratuito (Free).</li>
-<li>Omite o responde las preguntas de configuración inicial.</li>
-</ol>
-<p>Ahora ya tienes una cuenta de GitHub.</p>
-<hr>
-<h2 id="%E2%9C%85-paso-2-crear-un-nuevo-repositorio">✅ PASO 2: Crear un nuevo repositorio</h2>
-<p>Ahora vamos a crear un &quot;repositorio&quot;, es un espacio dedicado a un proyecto, en él podremos crear todos los archivos que queramos y del tipo que deseemos.</p>
-<ol>
-<li>
-<p>En la página principal de GitHub, haz clic en el icono <strong>&quot;+&quot;</strong> (arriba a la derecha) y selecciona <strong>&quot;New repository&quot;</strong>.</p>
-</li>
-<li>
-<p>Configura:</p>
-<ul>
-<li><strong>Repository name:</strong> por ejemplo<code>mi-pagina-web</code></li>
-<li><strong>Description:</strong> &quot;Tutorial para publicar una página web en GitHub Pages&quot;</li>
-<li><strong>Visibility:</strong> Selecciona <strong>Public</strong> porque queremos que cualquiera pueda ver nuestra página. También podría ser <strong>Private</strong>, pero sólo lo veríamos nosotros.</li>
-<li>Marca la opción <strong>&quot;Add a README file&quot;</strong>, es un fichero que explica el contenido del repositorio.</li>
-</ul>
-</li>
-<li>
-<p>Haz clic en <strong>&quot;Create repository&quot;</strong></p>
-</li>
-</ol>
-<hr>
-<h2 id="%E2%9C%85-paso-3-instalaci%C3%B3n-de-las-herramientas-necesarias">✅ PASO 3: Instalación de las  herramientas necesarias</h2>
-<p>Para crear y gestionar tu página web, necesitarás un editor de texto, preferiblemente orientado a programación:</p>
-<ol>
-<li><strong>Editor de Código</strong>:
-<ul>
-<li>Descarga el editor  <a href="https://code.visualstudio.com/">Visual Studio Code</a> (gratuito y muy usado) o su versión 100% Open Source <a href="https://vscodium.com/">VSCodium</a>. <a href="https://grok.com/share/c2hhcmQtMg%3D%3D_871c1e8b-0258-4d85-85ef-f4d69752f12b">Diferencia entre VSCode y VSCodium</a></li>
-<li>Alternativas: Sublime Text, Atom o Notepad++.</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="%E2%9C%85-paso-4-crear-la-p%C3%A1gina-web-html-b%C3%A1sico">✅ PASO 4: Crear la página web (HTML básico)</h2>
-<p>Crearemos una página web simple que contenga una versión reducida de este tutorial. Usaremos HTML (texto y estructura) y CSS (formato y aspecto) básicos.</p>
-<ol>
-<li>
-<p><strong>Crea una carpeta para tu proyecto</strong>:</p>
-<ul>
-<li>En tu PC, crea una carpeta llamada <code>mi-pagina-web</code>.</li>
-</ul>
-<ul>
-<li>Abre Visual Studio y haz que apunte a la carpeta de tu web. Usa la opción &quot;Archivo -&gt; Abrir Carpeta&quot;</li>
-</ul>
-</li>
-<li>
-<p><strong>Escribe el código HTML</strong>:</p>
-<ul>
-<li>Crea un fichero de texto &quot;Archivos -&gt; Nuevo Archivo de texto&quot;</li>
-</ul>
-<ul>
-<li>
-<p>Agrega el siguiente contenido:</p>
-<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"es"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Tutorial: Publicar Página Web en GitHub Pages<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"styles.css"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Tutorial: Cómo Publicar una Página Web en GitHub Pages<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Paso 1: Crear una Cuenta en GitHub<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Visita <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://github.com"</span>&gt;</span>github.com<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> y regístrate con un correo, usuario y contraseña.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Paso 2: Instalar Herramientas<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Descarga <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://code.visualstudio.com/"</span>&gt;</span>Visual Studio Code<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> y <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://git-scm.com/"</span>&gt;</span>Git<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- Añade más secciones según el tutorial --&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
-</div></code></pre>
-<ul>
-<li>Guarda el fichero con el nombre &quot;index.html&quot;</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Añade el fiecho de estilos CSS</strong>:</p>
-<ul>
-<li>Crea un nuevo fichero de texto</li>
-</ul>
-<ul>
-<li>
-<p>Agrega el siguiente contenido:</p>
-<pre class="hljs"><code><div><span class="hljs-selector-tag">body</span> {
-    <span class="hljs-attribute">font-family</span>: Arial, sans-serif;
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
-    <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
-    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f4f4f4</span>;
-}
-<span class="hljs-selector-tag">header</span> {
-    <span class="hljs-attribute">text-align</span>: center;
-    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#333</span>;
-    <span class="hljs-attribute">color</span>: white;
-    <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;
-}
-<span class="hljs-selector-tag">main</span> {
-    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">800px</span>;
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
-    <span class="hljs-attribute">background-color</span>: white;
-    <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
-    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;
-}
-<span class="hljs-selector-tag">h1</span>, <span class="hljs-selector-tag">h2</span> {
-    <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;
-}
-<span class="hljs-selector-tag">a</span> {
-    <span class="hljs-attribute">color</span>: <span class="hljs-number">#0066cc</span>;
-    <span class="hljs-attribute">text-decoration</span>: none;
-}
-<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> {
-    <span class="hljs-attribute">text-decoration</span>: underline;
-}
-</div></code></pre>
-<ul>
-<li>Guárdalo como <code>styles.css</code> en la misma carpeta.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Prueba localmente</strong>:</p>
-<ul>
-<li>Abre <code>index.html</code> en tu navegador para verificar que la página se vea correctamente (haz dobleclic en <code>index.html</code>)</li>
-<li>Si quieres prueba a modificar los ficheros, cambiando el texto, tamaño o los colores en el CSS. Recarga el página en el navegar para ver los cambios.</li>
-</ul>
-</li>
-</ol>
-<h2 id="%E2%9C%85-paso-5-subir-el-c%C3%B3digo-al-repositorio">✅ PASO 5: Subir el Código al Repositorio</h2>
-<ol>
-<li>
-<p>Ahora abre tu repositorio github en un navegador. Pulsa el botón &quot;+&quot; (&quot;Add&quot;)</p>
-<p><img src="images/github_add_file_to_repository.png" alt=""></p>
-</li>
-<li>
-<p>Podríamos crear un fichero con &quot;Create new file&quot; y añadir el contenido, pero si ya los tenemos creados es más rápido usar  &quot;Upload files&quot;
-<img src="images/github_create_new_file.png" alt=""></p>
-</li>
-<li>
-<p>Arrastra los 2 ficheros que has creado a la ventana que aparece:</p>
-</li>
-</ol>
-<p><img src="./images/github_upload_files.png" alt=""></p>
-<ol start="4">
-<li>Escribe un comentario sobre los cambios y pulsa &quot;Commit changes&quot;. Github está pensado para compartir contenido, de ahí la insistencia en que se comenten los cambios.</li>
-</ol>
-<h2 id="%E2%9C%85-paso-6-activar-github-pages">✅ PASO 6: Activar GitHub Pages</h2>
-<p>Ahora vamos a hacer que Github entienda que tu repositorio es una página web</p>
-<ol>
-<li>
-<p>Haz clic en la pestaña <strong>&quot;Settings&quot;</strong> (Configuración) de tu repositorio.</p>
-</li>
-<li>
-<p>En el menú lateral izquierdo, baja y haz clic en <strong>&quot;Pages&quot;</strong></p>
-</li>
-<li>
-<p>En la sección <strong>&quot;Source&quot;</strong>, selecciona:</p>
-<ul>
-<li><strong>Branch:</strong> <code>main</code></li>
-<li><strong>Folder:</strong> <code>/ (root)</code></li>
-</ul>
-</li>
-<li>
-<p>Haz clic en <strong>&quot;Save&quot;</strong></p>
-</li>
-</ol>
-<p><img src="./images/Activar_GitHub_Pages.png" alt=""></p>
-<hr>
-<h2 id="%E2%9C%85-paso-7-ver-tu-p%C3%A1gina-web-publicada">✅ PASO 7: Ver tu página web publicada</h2>
-<p>Abre en el navegador el enlace proporcionado por GitHub. Por ejemplo:</p>
-<pre class="hljs"><code><div>https://tuusuario.github.io/mi-pagina-web/
-</div></code></pre>
-<p>¡Listo! Tu sitio web está <strong>en línea y accesible para cualquiera</strong>.</p>
-<p><img src="./images/github_your_new_web_page_url.png" alt=""></p>
-<hr>
-<h2 id="%F0%9F%92%A1-otras-alternativas-gratuitas-a-github-pages">💡 Otras alternativas gratuitas a GitHub Pages</h2>
-<p>Si no quieres usar GitHub o buscas más opciones, aquí tienes algunas:</p>
-<h3 id="%F0%9F%94%B9-netlify-httpsnetlifycom">🔹 Netlify (<a href="https://netlify.com">https://netlify.com</a>)</h3>
-<ul>
-<li>Ideal para sitios estáticos.</li>
-<li>Puedes conectar directamente con GitHub.</li>
-<li>Funciona con drag &amp; drop de archivos también.</li>
-<li>HTTPS y dominio gratuito incluido (<code>.netlify.app</code>)</li>
-</ul>
-<h3 id="%F0%9F%94%B9-vercel-httpsvercelcom">🔹 Vercel (<a href="https://vercel.com">https://vercel.com</a>)</h3>
-<ul>
-<li>Rápido despliegue de proyectos web.</li>
-<li>Integración con GitHub y frameworks modernos como Next.js.</li>
-<li>URL gratuita (<code>.vercel.app</code>)</li>
-</ul>
-<h3 id="%F0%9F%94%B9-neocities-httpsneocitiesorg">🔹 Neocities (<a href="https://neocities.org">https://neocities.org</a>)</h3>
-<ul>
-<li>Estilo “old-school”, perfecto para sitios personales o blogs.</li>
-<li>Interfaz sencilla.</li>
-<li>1 sitio gratis con 1 GB de espacio.</li>
-</ul>
-<h3 id="%F0%9F%94%B9-render-httpsrendercom">🔹 Render (<a href="https://render.com">https://render.com</a>)</h3>
-<ul>
-<li>Similar a Vercel/Netlify, más orientado a apps y APIs, pero sirve para sitios estáticos.</li>
-</ul>
-<p>¿Conoces alguna página gratuita más? No dejes de comentarlo</p>
-<hr>
-<h2 id="%F0%9F%A7%BC-consejos-finales">🧼 Consejos finales</h2>
-<ul>
-<li>Usa nombres de archivo simples (<code>index.html</code> es la página de inicio por defecto).</li>
-<li>Evita espacios o caracteres especiales en nombres de archivos o carpetas.</li>
-<li>Puedes agregar CSS o imágenes subiéndolos al mismo repositorio.</li>
-<li>Si haces cambios, recuerda <strong>commitear</strong> y luego GitHub actualiza la página automáticamente.</li>
-<li>A veces tarda unos segundos en aparecer la última versión...</li>
-<li></li>
-</ul>
-
+    <div class="container">
+        <header>
+            <h1>Tutorial: Cómo Publicar una Página Web en GitHub Pages</h1>
+        </header>
+        <main>
+            <section>
+                <h2>Introducción</h2>
+                <p>Hoy en día, la mayoría de las publicaciones se hacen en las redes sociales. Cada vez se usan menos los blogs, y las páginas web propias en general.</p>
+                <p>Pero desde El Cacharreo queremos reivindicar la publicación de contenidos por nosotros mismos, controlando todo el proceso.</p>
+                <p>Las redes sociales son un buen escaparate, pero hay demasiadas cosas que no controlamos:</p>
+                <ul>
+                    <li>Un algoritmo desconocido decide quién te ve.</li>
+                    <li>El mismo algoritmo decide qué te interesa.</li>
+                    <li>También el orden, la frecuencia o la antigüedad de las publicaciones la decide ese algoritmo.</li>
+                    <li>Según tu perfil verás unas cosas u otras: ¿eres un señor? te enseñará deportes...</li>
+                </ul>
+                <p>Por todo ello vamos a empezar una serie de tutoriales explicando cómo funciona la publicación web, cómo podemos crear y publicar nuestros propios contenidos.</p>
+                <p>Eso sí, luego recurriremos a las redes sociales para darle publicidad y moverlas un poquito...</p>
+                <p>Vamos a empezar con un tutorial muy detallado para publicar una página web en GitHub usando GitHub Pages. Al final, también verás otras alternativas gratuitas para alojar sitios no profesionales y como ejemplo de página web publicada usaremos este mismo tutorial.</p>
+                <p>Vamos a simplificar, usando sólo HTML, y algo de estilo (CSS) pero no interactividad (javascript) de momento.</p>
+                <p>Como hemos dicho usaremos para el alojamiento GitHub, que es un servicio de almacenamiento en la nube, pero especializado en temas de programación o de documentación. Yo lo uso para guardar la documentación de mis cursos.</p>
+            </section>
+            <section>
+                <h2>🧰 Requisitos previos</h2>
+                <ul>
+                    <li>Una computadora con navegador web (Chrome, Firefox, Edge, etc.)</li>
+                    <li>Conexión a internet</li>
+                    <li>Para esta primera versión, no vas a necesitar conocimientos en programación ni de uso avanzado de su sistema operativo</li>
+                </ul>
+            </section>
+            <section>
+                <h2>✅ PASO 1: Crear una cuenta en GitHub</h2>
+                <p>Empezaremos creando nuestra cuenta en GitHub:</p>
+                <ul>
+                    <li>Ve a <a href="https://github.com">github.com</a></li>
+                    <li>Haz clic en el botón "Sign up" (Registrarse). Como verás la página está en inglés, hasta donde yo sé no se puede seleccionar otro idioma, mejor que te acostumbres a usar el inglés...</li>
+                    <li>Escribe:
+                        <ul>
+                            <li>Nombre de usuario</li>
+                            <li>Un correo electrónico válido</li>
+                            <li>Contraseña segura</li>
+                        </ul>
+                    </li>
+                    <li>Verifica tu cuenta mediante el CAPTCHA y después se te enviará una confirmación a tu email.</li>
+                    <li>Si usamos "Rompecabezas visual"</li>
+                    <li>Elige el plan gratuito (Free).</li>
+                    <li>Omite o responde las preguntas de configuración inicial.</li>
+                </ul>
+                <p>Ahora ya tienes una cuenta de GitHub.</p>
+            </section>
+            <section>
+                <h2>✅ PASO 2: Crear un nuevo repositorio</h2>
+                <p>Ahora vamos a crear un "repositorio", es un espacio dedicado a un proyecto, en él podremos crear todos los archivos que queramos y del tipo que deseemos.</p>
+                <ul>
+                    <li>En la página principal de GitHub, haz clic en el icono "+" (arriba a la derecha) y selecciona "New repository".</li>
+                    <li>Configura:
+                        <ul>
+                            <li>Repository name: por ejemplo mi-pagina-web</li>
+                            <li>Description: "Tutorial para publicar una página web en GitHub Pages"</li>
+                            <li>Visibility: Selecciona Public porque queremos que cualquiera pueda ver nuestra página. También podría ser Private, pero sólo lo veríamos nosotros.</li>
+                            <li>Marca la opción "Add a README file", es un fichero que explica el contenido del repositorio.</li>
+                        </ul>
+                    </li>
+                    <li>Haz clic en "Create repository"</li>
+                </ul>
+            </section>
+            <section>
+                <h2>✅ PASO 3: Instalación de las herramientas necesarias</h2>
+                <p>Para crear y gestionar tu página web, necesitarás un editor de texto, preferiblemente orientado a programación:</p>
+                <ul>
+                    <li>Editor de Código:
+                        <ul>
+                            <li>Descarga el editor <a href="https://code.visualstudio.com/">Visual Studio Code</a> (gratuito y muy usado) o su versión 100% Open Source <a href="https://vscodium.com/">VSCodium</a>. <a href="https://vscodium.com/#why">Diferencia entre VSCode y VSCodium</a></li>
+                            <li>Alternativas: Sublime Text, Atom o Notepad++.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>✅ PASO 4: Crear la página web (HTML básico)</h2>
+                <p>Crearemos una página web simple que contenga una versión reducida de este tutorial. Usaremos HTML (texto y estructura) y CSS (formato y aspecto) básicos.</p>
+                <ul>
+                    <li>Crea una carpeta para tu proyecto:
+                        <ul>
+                            <li>En tu PC, crea una carpeta llamada mi-pagina-web.</li>
+                            <li>Abre Visual Studio y haz que apunte a la carpeta de tu web. Usa la opción "Archivo -> Abrir Carpeta"</li>
+                        </ul>
+                    </li>
+                    <li>Escribe el código HTML:
+                        <ul>
+                            <li>Crea un fichero de texto "Archivos -> Nuevo Archivo de texto"</li>
+                            <li>Agrega el contenido (se omite el código aquí, pero está en el archivo original)</li>
+                            <li>Guarda el fichero con el nombre "index.html"</li>
+                        </ul>
+                    </li>
+                    <li>Añade el fichero de estilos CSS:
+                        <ul>
+                            <li>Crea un nuevo fichero de texto</li>
+                            <li>Agrega el contenido (se omite el código aquí, pero está integrado above)</li>
+                            <li>Guárdalo como styles.css en la misma carpeta.</li>
+                        </ul>
+                    </li>
+                    <li>Prueba localmente:
+                        <ul>
+                            <li>Abre index.html en tu navegador para verificar que la página se vea correctamente (haz doble clic en index.html)</li>
+                            <li>Si quieres prueba a modificar los ficheros, cambiando el texto, tamaño o los colores en el CSS. Recarga la página en el navegador para ver los cambios.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>✅ PASO 5: Subir el Código al Repositorio</h2>
+                <ul>
+                    <li>Ahora abre tu repositorio github en un navegador. Pulsa el botón "+" ("Add")</li>
+                    <li>Podríamos crear un fichero con "Create new file" y añadir el contenido, pero si ya los tenemos creados es más rápido usar "Upload files"</li>
+                    <li>Arrastra los 2 ficheros que has creado a la ventana que aparece:</li>
+                    <li>Escribe un comentario sobre los cambios y pulsa "Commit changes". Github está pensado para compartir contenido, de ahí la insistencia en que se comenten los cambios.</li>
+                </ul>
+            </section>
+            <section>
+                <h2>✅ PASO 6: Activar GitHub Pages</h2>
+                <ul>
+                    <li>Haz clic en la pestaña "Settings" (Configuración) de tu repositorio.</li>
+                    <li>En el menú lateral izquierdo, baja y haz clic en "Pages"</li>
+                    <li>En la sección "Source", selecciona:
+                        <ul>
+                            <li>Branch: main</li>
+                            <li>Folder: / (root)</li>
+                        </ul>
+                    </li>
+                    <li>Haz clic en "Save"</li>
+                </ul>
+            </section>
+            <section>
+                <h2>✅ PASO 7: Ver tu página web publicada</h2>
+                <p>Abre en el navegador el enlace proporcionado por GitHub. Por ejemplo:</p>
+                <p><a href="https://tuusuario.github.io/mi-pagina-web/">https://tuusuario.github.io/mi-pagina-web/</a></p>
+                <p>¡Listo! Tu sitio web está en línea y accesible para cualquiera.</p>
+            </section>
+            <section>
+                <h2>💡 Otras alternativas gratuitas a GitHub Pages</h2>
+                <p>Si no quieres usar GitHub o buscas más opciones, aquí tienes algunas:</p>
+                <ul>
+                    <li><strong>Netlify</strong> (<a href="https://netlify.com">netlify.com</a>)
+                        <ul>
+                            <li>Ideal para sitios estáticos.</li>
+                            <li>Puedes conectar directamente con GitHub.</li>
+                            <li>Funciona con drag & drop de archivos también.</li>
+                            <li>HTTPS y dominio gratuito incluido (.netlify.app)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Vercel</strong> (<a href="https://vercel.com">vercel.com</a>)
+                        <ul>
+                            <li>Rápido despliegue de proyectos web.</li>
+                            <li>Integración con GitHub y frameworks modernos como Next.js.</li>
+                            <li>URL gratuita (.vercel.app)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Neocities</strong> (<a href="https://neocities.org">neocities.org</a>)
+                        <ul>
+                            <li>Estilo “old-school”, perfecto para sitios personales o blogs.</li>
+                            <li>Interfaz sencilla.</li>
+                            <li>1 sitio gratis con 1 GB de espacio.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Render</strong> (<a href="https://render.com">render.com</a>)
+                        <ul>
+                            <li>Similar a Vercel/Netlify, más orientado a apps y APIs, pero sirve para sitios estáticos.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>¿Conoces alguna página gratuita más? No dejes de comentarlo</p>
+            </section>
+            <section>
+                <h2>🧼 Consejos finales</h2>
+                <ul>
+                    <li>Usa nombres de archivo simples (index.html es la página de inicio por defecto).</li>
+                    <li>Evita espacios o caracteres especiales en nombres de archivos o carpetas.</li>
+                    <li>Puedes agregar CSS o imágenes subiéndolos al mismo repositorio.</li>
+                    <li>Si haces cambios, recuerda commitear y luego GitHub actualiza la página automáticamente.</li>
+                    <li>A veces tarda unos segundos en aparecer la última versión...</li>
+                </ul>
+            </section>
+        </main>
+    </div>
 </body>
 </html>
