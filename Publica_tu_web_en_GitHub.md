@@ -60,7 +60,7 @@ Ahora vamos a crear un "repositorio", es un espacio dedicado a un proyecto, en �
 1. En la página principal de GitHub, haz clic en el icono **"+"** (arriba a la derecha) y selecciona **"New repository"**.
     
 2. Configura:
-    - **Repository name:** por ejemplo`mi-pagina-web`
+    - **Repository name:** por ejemplo  `mi-pagina-web`
     - **Description:** "Tutorial para publicar una página web en GitHub Pages"
     - **Visibility:** Selecciona **Public** porque queremos que cualquiera pueda ver nuestra página. También podría ser **Private**, pero sólo lo veríamos nosotros. 
     - Marca la opción **"Add a README file"**, es un fichero que explica el contenido del repositorio.
@@ -121,7 +121,7 @@ Crearemos una página web simple que contenga una versión reducida de este tuto
         </html>
         ```
         * Guarda el fichero con el nombre "index.html"
-3. **Añade el fiecho de estilos CSS**:
+3. **Añade el fichero de estilos CSS**:
 	* Crea un nuevo fichero de texto
     - Agrega el siguiente contenido:
         
